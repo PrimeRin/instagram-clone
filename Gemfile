@@ -13,6 +13,7 @@ gem "jbuilder"
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
 gem "bootstrap"
+gem "devise"
 gem 'sass-rails', '>= 5'
 
 group :development, :test do
