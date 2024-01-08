@@ -1,13 +1,8 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Posts</h1>
-
-<div id="posts">
+<div id="posts" class="d-flex justify-content-center mt-4">
   <% @posts.each do |post| %>
     <%= render post %>
-    <p>
-      <%= link_to "Show this post", post %>
-    </p>
   <% end %>
 </div>
 
