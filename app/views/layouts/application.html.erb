@@ -7,11 +7,13 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%#= stylesheet_link_tag 'application', media: 'all' %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <%= yield %>
+  <% if current_user %>
+    <%= render partial: 'layouts/navbar' %>
+  <% end %>
+  <%= yield %>
   </body>
 </html>
