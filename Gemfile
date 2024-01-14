@@ -16,6 +16,7 @@ gem "bootstrap"
 gem "devise"
 gem 'sass-rails', '>= 5'
 gem "font-awesome-sass", "~> 6.5.1"
+gem 'activestorage-validator'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
