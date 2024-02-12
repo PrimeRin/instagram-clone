@@ -24,6 +24,7 @@ Rails.application.configure do
   # Apache or NGINX already handles this.
   config.public_file_server.enabled = true
   config.assets.compile = true
+  config.active_record.sqlite3_production_warning=false
 
   # Compress CSS using a preprocessor.
   # config.assets.css_compressor = :sass
