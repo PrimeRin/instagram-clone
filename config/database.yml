@@ -1,20 +1,19 @@
 
 default: &default
   adapter: postgresql
+  url: <%= ENV["DATABASE_URL"] %>
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
 
 development:
   <<: *default
-  database: instragram_database_dev
+  url: <%= ENV["DATABASE_URL"] %>
 
 test:
   <<: *default
-  database: instragram_database_test
+  url: <%= ENV["DATABASE_URL"] %>
 
 production:
   <<: *default
   adapter: postgresql
   url: <%= ENV["DATABASE_URL"] %>
-  database: instragram_database_pro
-
