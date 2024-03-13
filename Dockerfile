@@ -30,8 +30,7 @@ COPY . .
 RUN bundle exec bootsnap precompile --gemfile app/ lib/
 
 ## Entrypoint prepares the database.
-#ENTRYPOINT ["bin/docker-entrypoint"]
-RUN bundle exec rails db:create db:migrate
+ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 
 # Start the server by default, this can be overwritten at runtime
 EXPOSE 3000
