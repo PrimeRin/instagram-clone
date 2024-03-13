@@ -29,8 +29,10 @@ COPY . .
 # Precompile bootsnap code for faster boot times
 RUN bundle exec bootsnap precompile --gemfile app/ lib/
 
-## Entrypoint prepares the database.
-ENTRYPOINT ["/rails/bin/docker-entrypoint"]
+RUN --mount=type=secret,id=RAILS_MASTER_KEY $(cp /run/secrets/RAILS_MASTER_KEY /app/config/master.key) && \
+ npm install -g yarn && yarn install && \
+ RAILS_ENV=production bundle exec rails assets:precompile && \
+ rm /app/config/master.key
 
 # Start the server by default, this can be overwritten at runtime
 EXPOSE 3000
