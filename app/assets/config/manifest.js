@@ -7,4 +7,5 @@
 //= link controllers/hello_controller.js
 //= link controllers/index.js
 //= link controllers/search_results_controller.js
+//= link custom/custom.js
 //= link_directory ../stylesheets .css
