@@ -8,7 +8,11 @@ RUN apt-get update -qq && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /usr/share/doc /usr/share/man
 
-RUN apt-get update && apt-get install -y nodejs
+# Install Node.js and Yarn
+RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+RUN apt-get update -qq && apt-get install -y nodejs yarn
 
 # Rails app lives here
 WORKDIR /rails
@@ -22,6 +26,9 @@ ENV RAILS_LOG_TO_STDOUT="1" \
 # Install application gems
 COPY Gemfile Gemfile.lock ./
 RUN bundle install
+
+# Install JavaScript dependencies
+RUN yarn add filepond filepond-plugin-image-preview filepond-plugin-file-validate-type
 
 # Copy application code
 COPY . .
